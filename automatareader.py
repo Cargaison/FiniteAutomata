@@ -1,5 +1,4 @@
-from Classes import (Transition, State, Automata, creationlangage,
-                     print_automata, show_automata)
+from Classes import (Transition, State, Automata, creationlangage,show_automata)
 
 
 
@@ -11,6 +10,8 @@ state2 = State("2")
 state3 = State("3")
 state1.add_outgoing_transition(t1)
 state2.add_incoming_transition(t1)
+state1.add_incoming_transition(t2)
+state2.add_outgoing_transition(t2)
 state3.add_incoming_transition(t3)
 state2.add_outgoing_transition(t3)
 auto1 = Automata()

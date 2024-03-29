@@ -22,11 +22,6 @@ class Automata:
         self.states.append(state)
     def add_transition(self, transition):
         self.transitions.append(transition)
-        for state in self.states:
-            if state.name == transition.begin:
-                state.add_outgoing_transition(transition)
-            if state.name == transition.end:
-                state.add_incoming_transition(transition)
 
 def creationlangage(x):
     alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
@@ -37,11 +32,14 @@ def creationlangage(x):
             langage.append(alphabet[i])
     return langage
 
-def print_automata(automata):
-    for transition in automata.transitions:
-        print(f"{transition.begin} --{transition.language}--> {transition.end}")
+
 def show_automata(automata):
+    max_level =0
+    for level in range(0,len(automata.states)):
+        if len(automata.states[level].out_transitions) > max_level:
+            max_level = len(automata.states[level].out_transitions)
     for state in automata.states:
         print(state.name, end="")
-        for transition in range(0, len(state.out_transitions)-1):
-            print(f" ->", state.out_transitions[transition].language," ->",end="")
+        if state.out_transitions:
+            print(f" ->", state.out_transitions[0].language," ->",end="")
+    print("")
