@@ -1,3 +1,10 @@
+#Quand j'ai fait ce code seul dieu et moi savions ce que je faisais
+#maintenant seul dieu le sait
+#le code fonctionne si vous voulez le modifier à vos risques et périls
+#compteur d'heures perdues sur le projet:
+#-----13 heures et 30 minutes-----
+#merci d'augmenter le compteur pour chaque heure passée sur cet enfer
+
 class Transition:
     def __init__(self, symbol, begin, end):
         self.symbol = symbol
