@@ -1,9 +1,3 @@
-#Quand j'ai fait ce code seul dieu et moi savions ce que je faisais
-#maintenant seul dieu le sait
-#le code fonctionne si vous voulez le modifier à vos risques et périls
-#compteur d'heures perdues sur le projet:
-#-----13 heures et 30 minutes-----
-#merci d'augmenter le compteur pour chaque heure passée sur cet enfer
 
 class Transition:
     def __init__(self, symbol, begin, end):
@@ -132,3 +126,34 @@ class Automata:
         if sink_state_added:
             for symbol in self.alphabet:
                 self.add_transition(Transition(symbol, sink_state_name, sink_state_name))
+
+    def is_standardized(self):
+        # standardisé si et seulement si il a un seul état initial
+        # et aucun autre état ne le mène à cet état initial.
+        if len(self.initial_states) != 1:
+            return False
+        initial_state = self.initial_states[0]
+        for state in self.states.values():
+            for transition in state.out_transitions:
+                if transition.end == initial_state:
+                    return False
+        return True
+
+    def is_complete(self):
+        # complet si chaque état a une transition pour chaque symbole dans l'alphabet
+        for state in self.states.values():
+            symbols = {transition.symbol for transition in state.out_transitions}
+            if symbols != set(self.alphabet):
+                return False
+        return True
+
+    def is_deterministic(self):
+        # déterministe si pour chaque état et chaque symbole
+        # il n'y a qu'une seule transition
+        for state in self.states.values():
+            seen_symbols = set()
+            for transition in state.out_transitions:
+                if transition.symbol in seen_symbols:
+                    return False
+                seen_symbols.add(transition.symbol)
+        return True

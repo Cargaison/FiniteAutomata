@@ -1,18 +1,28 @@
 from Classes import (Transition, State, Automata)
 automata = Automata()
-automata.read_from_file('automata.txt')  # The file must have the correct content
+automata.read_from_file('automata.txt')
 
 print("Initial Automaton:")
 automata.display()
+print("Is standardized? ", automata.is_standardized())
+print("Is complete? ", automata.is_complete())
+print("Is deterministic? ", automata.is_deterministic())
 
 automata.make_deterministic()
 print("\nDeterministic Automaton:")
 automata.display()
+print("Is deterministic? ", automata.is_deterministic())
 
 automata.standardize()
-print("\nStandardize Automaton:")
+print("\nStandardized Automaton:")
 automata.display()
+print("Is standardized? ", automata.is_standardized())
 
 automata.make_complete()
-print("\nDeterministic Automaton:")
+print("\nComplete Automaton:")
 automata.display()
+print("Is complete? ", automata.is_complete())
+print("------FINAL RESULTS------")
+print("Is standardized? ", automata.is_standardized())
+print("Is complete? ", automata.is_complete())
+print("Is deterministic? ", automata.is_deterministic())
