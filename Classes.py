@@ -164,7 +164,9 @@ class Automata:
 
 # Example usage
 automata = Automata()
-automata.read_from_file('automata.txt')  # Assume 'automata.txt' has the correct content
+file_number = input("Which FA do you want to use? ")
+file_name = f"{file_number}.txt"
+automata.read_from_file(file_name)  # Assume 'automata.txt' has the correct content
 print("Is standardized? ", automata.is_standardized())
 print("Is complete? ", automata.is_complete())
 print("Is deterministic? ", automata.is_deterministic())
